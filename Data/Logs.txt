@@ -1,0 +1,13 @@
+2022-07-09 23:40:13 : ReadRessources :: SUCCESS
+2022-07-09 23:40:13 : Check Company's Ressources 
+2022-07-09 23:40:13 : Init Ressource Controler :: SUCCESS
+2022-07-09 23:40:13 : Get Ressources For Company:: SUCCESS
+2022-07-09 23:40:13 : Init Company
+2022-07-09 23:40:13 : SetCompany :: SUCCESS
+2022-07-09 23:40:13 : Init Company Controler :: SUCCESS
+2022-07-09 23:40:13 : Init Management
+2022-07-09 23:40:13 : Game :: Begin
+
+2022-07-09 23:40:13 : ClearFrame
+2022-07-09 23:40:13 : Init Top frame
+2022-07-09 23:40:13 : Init Content Frame with Lframe and Rframe
