@@ -48,3 +48,19 @@ class Company:
     def GetMaxPower(self):
         return self.PowerMax
 
+    def SetMoney(self, value):
+        self.Money = value
+
+    def SetRessources(self, value):
+        self.Ressources = value
+
+    def GetSave(self):
+        chaine = self.Name+"\n"
+        chaine += str(self.Money)+"\n"
+        chaine += str(self.Employes)+"\n"
+        chaine += str(self.Power)+"\n"
+        chaine += str(self.BAT_Storage)+"\n"
+        chaine += str(self.BAT_Laboratory)+"\n"
+        chaine += str(self.BAT_Factory)+"\n"
+        chaine += str(self.BAT_Generator)+"\n"
+        return chaine

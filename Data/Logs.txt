@@ -1,13 +1,25 @@
-2022-07-09 23:40:13 : ReadRessources :: SUCCESS
-2022-07-09 23:40:13 : Check Company's Ressources 
-2022-07-09 23:40:13 : Init Ressource Controler :: SUCCESS
-2022-07-09 23:40:13 : Get Ressources For Company:: SUCCESS
-2022-07-09 23:40:13 : Init Company
-2022-07-09 23:40:13 : SetCompany :: SUCCESS
-2022-07-09 23:40:13 : Init Company Controler :: SUCCESS
-2022-07-09 23:40:13 : Init Management
-2022-07-09 23:40:13 : Game :: Begin
+2022-07-11 22:49:30 : Game :: Init
+2022-07-11 22:49:30 : ReadRessources :: SUCCESS
+2022-07-11 22:49:30 : Check Company's Ressources 
+2022-07-11 22:49:30 : Check Company's Ressources :: Exist
+2022-07-11 22:49:30 : Init RessourceView
+2022-07-11 22:49:30 : Init Ressource Controler :: SUCCESS
+2022-07-11 22:49:30 : Get Ressources For Company:: SUCCESS
+2022-07-11 22:49:30 : Company exist
+2022-07-11 22:49:30 : Init Company
+2022-07-11 22:49:30 : SetCompany :: SUCCESS
+2022-07-11 22:49:30 : Init Company Controler :: SUCCESS
+2022-07-11 22:49:30 : Init RessourceView
+2022-07-11 22:49:30 : Recipe Controler:: ReadFile
+2022-07-11 22:49:30 : Init RecipeControler
+2022-07-11 22:49:30 : BillControler :: ReadBill :: SUCCESS
+2022-07-11 22:49:30 : Init BillView
+2022-07-11 22:49:30 : Init billControler
+2022-07-11 22:49:30 : Init Management
+2022-07-11 22:49:30 : Game :: Begin
 
-2022-07-09 23:40:13 : ClearFrame
-2022-07-09 23:40:13 : Init Top frame
-2022-07-09 23:40:13 : Init Content Frame with Lframe and Rframe
+2022-07-11 22:49:30 : ClearFrame
+2022-07-11 22:49:30 : Init Top frame
+2022-07-11 22:49:30 : Init Content Frame with Lframe and Rframe
+2022-07-11 22:50:15 : Bill view :: GetAllBill
+2022-07-11 22:50:16 : you clicked on : Bois

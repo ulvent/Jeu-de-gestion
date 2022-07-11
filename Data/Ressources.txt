@@ -1,1 +1,5 @@
 1:Bois:0.5
+2:Roche:0.6
+3:Minerai de fer:1.2
+4:Minerai de cuivre:1.3
+5:Eau:0.25

@@ -1,5 +1,6 @@
 #Autor : Alexis Callens
 from Logs import EnterLog
+import os
 from Models.Company import Company
 
 
@@ -13,22 +14,25 @@ class CompanyControler:
 
     def SetCompany(self):
         ress = self.RC.GetRessourceForCompany()
-        with open("Data/Save/Company", "a+") as File:
+        with open("Data/Save/Company.txt", "r") as File:
             data = File.readlines()
             if data == []:
+                EnterLog("New Company")
                 self.Company = Company("Optimisation.Inc", 1500, 10, 0, 1, 0, 1, 1, ress)
+                File.close()
+                self.SaveCompany()
             else:
-                data = File.readlines()
+                EnterLog("Company exist")
                 Name = data[0].split("\n")[0]
                 Money = float(data[1].split("\n")[0])
                 Employe = int(data[2].split("\n")[0])
-                PowerMax = int(data[3].split("\n")[0])
-                Power = int(data[4].split("\n")[0])
-                Storage = int(data[5].split("\n")[0])
-                Laboratory = int(data[6].split("\n")[0])
-                Factory = int(data[7].split("\n")[0])
-                Generator = int(data[0].split("\n")[0])
+                Power = int(data[3].split("\n")[0])
+                Storage = int(data[4].split("\n")[0])
+                Laboratory = int(data[5].split("\n")[0])
+                Factory = int(data[6].split("\n")[0])
+                Generator = int(data[7].split("\n")[0])
                 self.Company = Company(Name, Money, Employe, Power, Storage, Laboratory, Factory, Generator, ress)
+            File.close()
         EnterLog("SetCompany :: SUCCESS")
 
     def GetName(self):
@@ -57,3 +61,28 @@ class CompanyControler:
 
     def GetMaxPower(self):
         return self.Company.GetMaxPower()
+
+    def SetMoney(self, value):
+        self.Company.SetMoney(value)
+
+    def SetRessources(self, value):
+        self.Company.SetRessources(value)
+
+    def GetStorageQuantity(self):
+        st = 0
+        for r in self.GetRessources():
+            st += r.GetQuantity()
+        return st
+
+    def WriteRessources(self):
+        os.remove("Data/Save/Ressources.txt")
+        with open("Data/Save/Ressources.txt", "a+") as File:
+            for r in self.GetRessources():
+                File.write(str(r.GetID())+":"+str(r.GetQuantity())+"\n")
+            File.close()
+
+    def SaveCompany(self):
+        os.remove("Data/Save/Company.txt")
+        with open("Data/Save/Company.txt", "a+") as File:
+            File.write(self.Company.GetSave())
+            File.close()
