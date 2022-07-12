@@ -2,12 +2,10 @@
 from Logs import EnterLog
 
 class Company:
-    def __init__(self, name, money, employes, pw, st, lab, fact, gen,ress):
+    def __init__(self, name, money, st, lab, fact, gen, ress, machine):
         self.Name = name
         self.Money = money
-        self.Employes = employes
         self.PowerMax = gen*50
-        self.Power = pw
         #batiments
         self.BAT_Storage = st
         self.BAT_Laboratory = lab
@@ -15,6 +13,7 @@ class Company:
         self.BAT_Generator = gen
 
         self.Ressources = ress
+        self.Machines = machine
         EnterLog("Init Company")
 
     def GetName(self):
@@ -30,20 +29,17 @@ class Company:
     def GetRess(self):
         return self.Ressources
 
+    def GetMachines(self):
+        return self.Machines
+
     def GetStorage(self):
         return self.BAT_Storage
 
     def GetMoney(self):
         return self.Money
 
-    def GetEmployes(self):
-        return self.Employes
-
     def GetGenerator(self):
         return self.BAT_Generator
-
-    def GetPower(self):
-        return self.Power
 
     def GetMaxPower(self):
         return self.PowerMax
@@ -57,10 +53,8 @@ class Company:
     def GetSave(self):
         chaine = self.Name+"\n"
         chaine += str(self.Money)+"\n"
-        chaine += str(self.Employes)+"\n"
-        chaine += str(self.Power)+"\n"
         chaine += str(self.BAT_Storage)+"\n"
         chaine += str(self.BAT_Laboratory)+"\n"
         chaine += str(self.BAT_Factory)+"\n"
-        chaine += str(self.BAT_Generator)+"\n"
+        chaine += str(self.BAT_Generator)+"\n\n"
         return chaine

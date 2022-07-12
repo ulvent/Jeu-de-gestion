@@ -1,18 +1,18 @@
 class Recipe:
-    def __init__(self, id, name, product, qt, idm, cout, ress):
+    def __init__(self, id, product, qt, idm, cout, ress, lvl):
         self.ID = id
-        self.Name = name
         self.Product = product
         self.Quantity = qt
         self.IDM = idm
         self.Cost = cout
         self.Ress = ress
-
-    def GetName(self):
-        return self.Name
+        self.Level = lvl
 
     def GetProduct(self):
         return self.Product
+
+    def GetLevel(self):
+        return self.Level
 
     def GetQuantity(self):
         return self.Quantity
@@ -26,10 +26,12 @@ class Recipe:
     def GetID(self):
         return self.ID
 
+    def GetIDM(self):
+        return self.IDM
+
     def Tostring(self):
-        chaine = self.Name
-        chaine += "\n\nProduit : "+str(self.Quantity)+" "+self.Product
+        chaine = "Produit : "+str(self.Quantity)+" "+self.Product
         chaine += "\nCoût de production : "
         for i in range(0, len(self.Cost)):
-            chaine += "\n"+str(self.Cost[i])+" "+str(self.Ress[i])
+            chaine += str(self.Cost[i])+" "+str(self.Ress[i])
         return chaine

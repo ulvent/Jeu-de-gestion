@@ -18,7 +18,7 @@ class BillControler:
         impPrice = round(self.Bill[index].GetPrice() * self.Bill[index].GetQuantity())
         TVA = round((impPrice / 100) * 21, 2)
         stg = "Facture n° " + str(self.Bill[index].GetNumber())
-        stg += "\nAchat de " + self.Bill[index].GetProduct()
+        stg += "\nAchat de " + str(self.Bill[index].GetProduct())
         stg += "\n-----------------------------"
         stg += "\nPrix unitaire :\t" + str(self.Bill[index].GetPrice())+"€"
         stg += "\nQuantitée :\t" + str(self.Bill[index].GetQuantity())+" unités"

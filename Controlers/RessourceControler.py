@@ -42,7 +42,7 @@ class RessourceControler:
     def SetQuantityForCompany(self, id, value, list):
         for r in list:
             if int(r.GetID()) == int(id):
-                r.SetQuantity(value+r.GetQuantity())
+                r.SetQuantity(value)
                 return list
 
 
@@ -88,3 +88,18 @@ class RessourceControler:
         for w in frame.winfo_children():
             w.destroy()
         self.RV.GetStorage(frame, list)
+
+    def GetNameByID(self, value):
+        for r in self.ListR:
+            if r.GetID() == int(value):
+                return r.GetName()
+
+    def GetIDByName(self, value):
+        for r in self.ListR:
+            if r.GetName() == str(value):
+                return r.GetID()
+
+    def GetRessourceByIDForCompany(self, list, value):
+        for r in list:
+            if int(r.GetID()) == int(value):
+                return r

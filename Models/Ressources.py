@@ -28,3 +28,9 @@ class Ressources:
         chaine += "\n-----------------------------------------------------"
         chaine += "\nPrix TTC : "+str(round(self.Price*1.21, 2))+"€/unité"
         return chaine
+
+    def ToString(self):
+        chaine = "Nom : " + self.Name
+        chaine += "\nPrix : " + str(self.Price) + "€/unité"
+        chaine += "\nID : "+str(self.ID)
+        return chaine

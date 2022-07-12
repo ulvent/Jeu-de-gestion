@@ -3,6 +3,7 @@ from tkinter import *
 
 from Controlers.BillControler import BillControler
 from Controlers.CompanyControler import *
+from Controlers.MachineControler import MachineControler
 from Controlers.RecipeControler import RecipeControler
 from Controlers.RessourceControler import *
 
@@ -19,8 +20,9 @@ class Management:
 
         #Controlers
         self.RC = RessourceControler(self)
-        self.CC = CompanyControler(self.RC)
-        self.RCC = RecipeControler()
+        self.MC = MachineControler()
+        self.CC = CompanyControler(self.RC, self.MC, self)
+        self.RCC = RecipeControler(self)
         self.BC = BillControler(self)
 
         #window settings
@@ -28,7 +30,7 @@ class Management:
         self.Root.title("Optimisation Incorporation")
 
         #Programme setting
-        Version = "Version 0.2.1"
+        Version = "Version 0.3.0"
         Label(self.Root, text=Version).pack(side=BOTTOM)
 
         #test
@@ -51,7 +53,7 @@ class Management:
 
         #Right Frame
         Button(self.Rframe, text="Marchand", font=("Arial", 15), command=lambda: self.RC.GetShop(self.Rframe)).pack(fill=X)
-        Button(self.Rframe, text="Usine", font=("Arial", 15)).pack(fill=X)
+        Button(self.Rframe, text="Usine", font=("Arial", 15), command=lambda: self.CC.GetUsine(self.Rframe)).pack(fill=X)
         Button(self.Rframe, text="Laboratoire", font=("Arial", 15)).pack(fill=X)
         Button(self.Rframe, text="Stockage", font=("Arial", 15), command=lambda: self.RC.GetStorage(self.Rframe, self.CC.GetRessources())).pack(fill=X)
         Button(self.Rframe, text="Amélioration", font=("Arial", 15)).pack(fill=X)
@@ -76,7 +78,7 @@ class Management:
         for w in self.Tframe.winfo_children():
             w.destroy()
         qtTotal = self.CC.GetStorageQuantity()
-        stg = "Argent : "+str(self.CC.GetMoney())+"€\tEmployés : "+str(self.CC.GetEmployes())+"\tStockage : "+str(round(qtTotal/(self.CC.GetStorage()*1500)*100, 2))+"%"+"\tEnergie : "+str(self.CC.GetPower())+"/"+str(self.CC.GetMaxPower())
+        stg = "Argent : "+str(self.CC.GetMoney())+"€\t\tStockage : "+str(round(qtTotal/(self.CC.GetStorage()*1500)*100, 2))+"%"+"\t\tEnergie : "+str(self.MC.GetPowerMax())+"/"+str(self.CC.GetMaxPower())
         Label(self.Tframe, text=stg, font=("Arial", 15)).pack()
         EnterLog("Init Top frame")
 
@@ -84,12 +86,40 @@ class Management:
         if self.CC.GetMoney() >= price:
             print(str(self.CC.GetMoney())+"-"+str(price))
             self.CC.SetMoney(self.CC.GetMoney()-price)
-            self.CC.SetRessources(self.RC.SetQuantityForCompany(Ress.GetID(), qt, self.CC.GetRessources()))
+            rCompany = self.RC.GetRessourceByIDForCompany(self.CC.GetRessources(), Ress.GetID())
+            nqt = rCompany.GetQuantity()+qt
+            self.CC.SetRessources(self.RC.SetQuantityForCompany(Ress.GetID(), nqt, self.CC.GetRessources()))
             self.BC.AddNewBill(Ress.GetPrice(), Ress.GetName(), qt)
             self.CC.WriteRessources()
             self.CC.SaveCompany()
             self.initTop()
             self.Game()
+
+    def Production(self, qt, recipe):
+        EnterLog("Management :: Production")
+        cost = recipe.GetCost()
+        ress = recipe.GetRess()
+        check = len(cost)
+        nb = 0
+        for i in range(0, len(cost)):
+            rCompany = self.RC.GetRessourceByIDForCompany(self.CC.GetRessources(), ress[i])
+            if int(cost[i])*qt <= int(rCompany.GetQuantity()):
+                nb += 1
+            if nb == check:
+                EnterLog("Management :: Production :: SUCCESS")
+                for i in range(0, len(cost)):
+                    rCompany = self.RC.GetRessourceByIDForCompany(self.CC.GetRessources(), ress[i])
+                    nqt = rCompany.GetQuantity()-(int(cost[i])*qt)
+                    self.CC.SetRessources(self.RC.SetQuantityForCompany(rCompany.GetID(), nqt, self.CC.GetRessources()))
+                ressProd = self.RC.GetRessourceByIDForCompany(self.CC.GetRessources(), self.RC.GetIDByName(recipe.GetProduct()))
+                self.CC.SetRessources(self.RC.SetQuantityForCompany(ressProd.GetID(), qt, self.CC.GetRessources()))
+                self.CC.WriteRessources()
+                self.CC.SaveCompany()
+                self.initTop()
+                self.Game()
+            else:
+                EnterLog("Management :: Production :: Error : "+str(nb)+" =! "+str(check))
+
 
 
 
