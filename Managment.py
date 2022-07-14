@@ -34,7 +34,7 @@ class Management:
         self.Root.title("Optimisation Incorporation")
 
         #Programme setting
-        Version = "Version 1.2.0"
+        Version = "Version 1.2.3"
         Label(self.Root, text=Version).pack(side=BOTTOM)
 
         #test
@@ -88,16 +88,17 @@ class Management:
 
     def Buy(self, price, Ress, qt):
         if self.CC.GetMoney() >= price:
-            print(str(self.CC.GetMoney())+"-"+str(price))
-            self.CC.SetMoney(round(self.CC.GetMoney()-price, 2))
             rCompany = self.RC.GetRessourceByIDForCompany(self.CC.GetRessources(), Ress.GetID())
-            nqt = rCompany.GetQuantity()+qt
-            self.CC.SetRessources(self.RC.SetQuantityForCompany(Ress.GetID(), nqt, self.CC.GetRessources()))
-            self.BC.AddNewBill(Ress.GetPrice(), Ress.GetName(), qt, 0)
-            self.CC.WriteRessources()
-            self.CC.SaveCompany()
-            self.initTop()
-            self.Game()
+            nqt = rCompany.GetQuantity() + qt
+            if int(self.CC.GetStorage())*1500 >= self.CC.GetStorageQuantity() + nqt:
+                print(str(self.CC.GetMoney())+"-"+str(price))
+                self.CC.SetMoney(round(self.CC.GetMoney()-price, 2))
+                self.CC.SetRessources(self.RC.SetQuantityForCompany(Ress.GetID(), nqt, self.CC.GetRessources()))
+                self.BC.AddNewBill(Ress.GetPrice(), Ress.GetName(), qt, 0)
+                self.CC.WriteRessources()
+                self.CC.SaveCompany()
+                self.initTop()
+                self.Game()
 
     def Production(self, qt, recipe):
         EnterLog("Management :: Production")
@@ -129,8 +130,10 @@ class Management:
             if idm < 0:
                 if idm == -2:
                     self.CC.SetGenerateur(self.CC.GetGenerator() + 1)
-                else:
+                elif idm == -1:
                     self.CC.SetLabo(self.CC.GetLabo() + 1)
+                else:
+                    self.CC.SetStockage(self.CC.GetStorage() + 1)
             self.MC.SetLevelMachine(idm)
             self.MC.WriteMachine()
             self.CC.SetMachine(self.MC.GetMachine())

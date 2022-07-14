@@ -117,7 +117,8 @@ class CompanyControler:
                     else:
                         flag =2
             if flag == 0:
-                lt.append(machines[i])
+                if machines[i].GetID() > 0:
+                    lt.append(machines[i])
         self.SetMachine(lt)
 
     def SetGenerateur(self, value):
@@ -125,3 +126,6 @@ class CompanyControler:
 
     def SetLabo(self, value):
         self.Company.SetLabo(value)
+
+    def SetStockage(self, value):
+        self.Company.SetStock(value)

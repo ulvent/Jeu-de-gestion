@@ -58,6 +58,9 @@ class Company:
     def SetLabo(self, value):
         self.BAT_Laboratory = value
 
+    def SetStock(self, value):
+        self.BAT_Storage = value
+
     def GetLabo(self):
         return int(self.BAT_Laboratory)
 

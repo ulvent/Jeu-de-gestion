@@ -1,42 +1,73 @@
-2022-07-14 20:26:16 : Game :: Init
-2022-07-14 20:26:16 : SearchControler :: ReadSearch :: SUCCESS
-2022-07-14 20:26:16 : Init Search View
-2022-07-14 20:26:16 : Init SearchControler
-2022-07-14 20:26:16 : ReadRessources :: SUCCESS
-2022-07-14 20:26:16 : Check Company's Ressources 
-2022-07-14 20:26:16 : Check Company's Ressources :: Exist
-2022-07-14 20:26:16 : Init RessourceView
-2022-07-14 20:26:16 : Init Ressource Controler :: SUCCESS
-2022-07-14 20:26:16 : Init MachineView
-2022-07-14 20:26:16 : Init MachineControler
-2022-07-14 20:26:16 : Init RecipeView
-2022-07-14 20:26:16 : ReadRessources :: SUCCESS
-2022-07-14 20:26:16 : Check Company's Ressources 
-2022-07-14 20:26:16 : Check Company's Ressources :: Exist
-2022-07-14 20:26:16 : Init RessourceView
-2022-07-14 20:26:16 : Init Ressource Controler :: SUCCESS
-2022-07-14 20:26:16 : Recipe Controler:: ReadFile
-2022-07-14 20:26:16 : Init RecipeControler
-2022-07-14 20:26:16 : BillControler :: ReadBill :: SUCCESS
-2022-07-14 20:26:16 : Init BillView
-2022-07-14 20:26:16 : Init billControler
-2022-07-14 20:26:16 : Init RecipeView
-2022-07-14 20:26:16 : ReadRessources :: SUCCESS
-2022-07-14 20:26:16 : Check Company's Ressources 
-2022-07-14 20:26:16 : Check Company's Ressources :: Exist
-2022-07-14 20:26:16 : Init RessourceView
-2022-07-14 20:26:16 : Init Ressource Controler :: SUCCESS
-2022-07-14 20:26:16 : Recipe Controler:: ReadFile
-2022-07-14 20:26:16 : Init RecipeControler
-2022-07-14 20:26:16 : Init CompanyView
-2022-07-14 20:26:16 : Get Ressources For Company:: SUCCESS
-2022-07-14 20:26:16 : Company exist
-2022-07-14 20:26:16 : Init Company
-2022-07-14 20:26:16 : SetCompany :: SUCCESS
-2022-07-14 20:26:16 : Init Company Controler :: SUCCESS
-2022-07-14 20:26:16 : Init Management
-2022-07-14 20:26:16 : Game :: Begin
+2022-07-14 20:55:31 : Game :: Init
+2022-07-14 20:55:31 : SearchControler :: ReadSearch :: SUCCESS
+2022-07-14 20:55:31 : Init Search View
+2022-07-14 20:55:31 : Init SearchControler
+2022-07-14 20:55:31 : ReadRessources :: SUCCESS
+2022-07-14 20:55:31 : Check Company's Ressources 
+2022-07-14 20:55:31 : Check Company's Ressources :: Exist
+2022-07-14 20:55:31 : Init RessourceView
+2022-07-14 20:55:31 : Init Ressource Controler :: SUCCESS
+2022-07-14 20:55:31 : Init MachineView
+2022-07-14 20:55:31 : Init MachineControler
+2022-07-14 20:55:31 : Init RecipeView
+2022-07-14 20:55:31 : ReadRessources :: SUCCESS
+2022-07-14 20:55:31 : Check Company's Ressources 
+2022-07-14 20:55:31 : Check Company's Ressources :: Exist
+2022-07-14 20:55:31 : Init RessourceView
+2022-07-14 20:55:31 : Init Ressource Controler :: SUCCESS
+2022-07-14 20:55:31 : Recipe Controler:: ReadFile
+2022-07-14 20:55:31 : Init RecipeControler
+2022-07-14 20:55:32 : BillControler :: ReadBill :: No data
+2022-07-14 20:55:32 : Init BillView
+2022-07-14 20:55:32 : Init billControler
+2022-07-14 20:55:32 : Init RecipeView
+2022-07-14 20:55:32 : ReadRessources :: SUCCESS
+2022-07-14 20:55:32 : Check Company's Ressources 
+2022-07-14 20:55:32 : Check Company's Ressources :: Exist
+2022-07-14 20:55:32 : Init RessourceView
+2022-07-14 20:55:32 : Init Ressource Controler :: SUCCESS
+2022-07-14 20:55:32 : Recipe Controler:: ReadFile
+2022-07-14 20:55:32 : Init RecipeControler
+2022-07-14 20:55:32 : Init CompanyView
+2022-07-14 20:55:32 : Get Ressources For Company:: SUCCESS
+2022-07-14 20:55:32 : Company exist
+2022-07-14 20:55:32 : Init Company
+2022-07-14 20:55:32 : SetCompany :: SUCCESS
+2022-07-14 20:55:32 : Init Company Controler :: SUCCESS
+2022-07-14 20:55:32 : Init Management
+2022-07-14 20:55:32 : Game :: Begin
 
-2022-07-14 20:26:16 : ClearFrame
-2022-07-14 20:26:16 : Init Top frame
-2022-07-14 20:26:16 : Init Content Frame with Lframe and Rframe
+2022-07-14 20:55:32 : ClearFrame
+2022-07-14 20:55:32 : Init Top frame
+2022-07-14 20:55:32 : Init Content Frame with Lframe and Rframe
+2022-07-14 20:55:34 : Machine view :: AllMachine
+2022-07-14 20:55:36 : you clicked on : Entrepot
+2022-07-14 20:55:36 : MachineControler :: WriteMachine :: SUCCESS
+2022-07-14 20:55:36 : BillControler :: WriteBill
+2022-07-14 20:55:36 : Init Top frame
+2022-07-14 20:55:36 : Management :: Upgrade :: SUCCESS
+2022-07-14 20:55:36 : ClearFrame
+2022-07-14 20:55:36 : Init Content Frame with Lframe and Rframe
+2022-07-14 20:55:41 : Ressource view :: Shop
+2022-07-14 20:55:42 : you clicked on : Roche
+2022-07-14 20:55:42 : RessourceView :: GetInfo :: SUCCESS
+2022-07-14 20:55:45 : BillControler :: WriteBill
+2022-07-14 20:55:45 : Init Top frame
+2022-07-14 20:55:45 : ClearFrame
+2022-07-14 20:55:45 : Init Content Frame with Lframe and Rframe
+2022-07-14 20:55:47 : Ressource view :: GetStorage
+2022-07-14 20:55:48 : ClearFrame
+2022-07-14 20:55:48 : Init Content Frame with Lframe and Rframe
+2022-07-14 20:55:49 : Ressource view :: Shop
+2022-07-14 20:55:49 : you clicked on : Bois
+2022-07-14 20:55:49 : RessourceView :: GetInfo :: SUCCESS
+2022-07-14 20:55:52 : Ressource view :: Shop
+2022-07-14 20:55:54 : ClearFrame
+2022-07-14 20:55:54 : Init Content Frame with Lframe and Rframe
+2022-07-14 20:55:55 : Bill view :: GetAllBill
+2022-07-14 20:55:56 : you clicked on : Achat
+2022-07-14 20:55:56 : BillControler :: GetBill
+2022-07-14 20:55:58 : Bill view :: GetAllBill
+2022-07-14 20:55:59 : you clicked on : Achat
+2022-07-14 20:55:59 : BillControler :: GetBill
+2022-07-14 20:56:00 : Bill view :: GetAllBill

@@ -1,3 +1,4 @@
+-3:Entrepot:1:0:1650
 -2:Generateur:1:0:950
 -1:Laboratoire:0:0:3500
 1:Fondrie:0:5:650
