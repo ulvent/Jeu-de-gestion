@@ -9,7 +9,19 @@ class Search:
         self.Check =  valid
 
     def GetCheck(self):
-        return self.Check
+        return int(self.Check)
 
     def GetPrice(self):
         return self.Price
+
+    def GetName(self):
+        return self.Name
+
+    def GetID(self):
+        self.ID
+
+    def GetIDM(self):
+        return int(self.Machine)
+
+    def GetIDR(self):
+        return int(self.Ressource)

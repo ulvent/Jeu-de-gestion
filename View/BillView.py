@@ -17,14 +17,18 @@ class BillView:
         sb = ttk.Scrollbar(self.Frame, orient='vertical')
         sb.pack(side=RIGHT, fill=Y)
 
-        self.TreeBill = Treeview(self.Frame, yscrollcommand=sb.set, columns=("Number", "Product", "Total"))
+        self.TreeBill = Treeview(self.Frame, yscrollcommand=sb.set, columns=("Number", "Achat/Vente", "Product", "Total"))
         for column in self.TreeBill["columns"]:
             self.TreeBill.column(column, anchor=CENTER)  # This will center text in rows
             self.TreeBill.heading(column, text=column)
         self.TreeBill['show'] = 'headings'
         self.TreeBill.bind("<Double-1>", self.InfoBill)
         for b in list:
-            self.TreeBill.insert('', END, values=(b.GetNumber(), b.GetProduct(), str(b.GetTotalPrice()) + "€"))
+            if b.GetType() == 1:
+                ty = "Vente"
+            else:
+                ty = "Achat"
+            self.TreeBill.insert('', END, values=(b.GetNumber(), ty, b.GetProduct(), str(b.GetTotalPrice()) + "€"))
         self.TreeBill.pack(fill=X)
         sb.config(command=self.TreeBill.yview)
         Button(self.Frame, text="Retour", command=self.BC.Retour).pack(fill=X)

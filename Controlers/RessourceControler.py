@@ -5,12 +5,13 @@ from View.RessourceView import RessourceView
 
 
 class RessourceControler:
-    def __init__(self, backup):
+    def __init__(self, backup, sc):
         self.ListR = []
         self.ReadRessources()
         self.CheckRessourceCompany()
         self.RV = RessourceView(self)
         self.Back = backup
+        self.SC = sc
         EnterLog("Init Ressource Controler :: SUCCESS")
 
     def ReadRessources(self):
@@ -47,16 +48,15 @@ class RessourceControler:
 
 
     def InitRessourcesForCompany(self):
-        with open("Data/Save/Ressources.txt", "a+") as File:
+        with open("Data/Save/Ressources.txt", "a+", encoding="UTF-8") as File:
             for i in range(0, len(self.ListR)):
-                print("Name : "+self.ListR[i].GetName())
                 File.write(str(self.ListR[i].GetID())+":0\n")
             File.close()
         EnterLog("Init Ressources For Company :: SUCCESS")
 
     def CheckRessourceCompany(self):
         EnterLog("Check Company's Ressources ")
-        with open("Data/Save/Ressources.txt", "r") as File:
+        with open("Data/Save/Ressources.txt", "r", encoding="UTF-8") as File:
             data = File.readlines()
             if data == []:
                 self.InitRessourcesForCompany()
@@ -66,7 +66,7 @@ class RessourceControler:
     def GetShop(self, frame):
         for w in frame.winfo_children():
             w.destroy()
-        self.RV.Shop(self.ListR, frame)
+        self.RV.Shop(self.verifRessource(self.ListR), frame)
 
     def GetInfo(self, value):
         r = self.GetRessourceByID(value)
@@ -87,7 +87,7 @@ class RessourceControler:
     def GetStorage(self, frame, list):
         for w in frame.winfo_children():
             w.destroy()
-        self.RV.GetStorage(frame, list)
+        self.RV.GetStorage(frame, self.verifRessource(list))
 
     def GetNameByID(self, value):
         for r in self.ListR:
@@ -103,3 +103,28 @@ class RessourceControler:
         for r in list:
             if int(r.GetID()) == int(value):
                 return r
+
+    def verifRessource(self, list):
+        lt = []
+        searches = self.SC.GetSearches()
+        for i in range(0, len(list)):
+            flag = 0
+            for j in range(0, len(searches)):
+                if list[i].GetID() == searches[j].GetIDR():
+                    if searches[j].GetCheck() == 1:
+                        lt.append(list[i])
+                        flag =1
+                    else:
+                        flag = 2
+            if flag == 0:
+                lt.append(list[i])
+        return lt
+
+    def Sell(self, qt, price, idr):
+        r = self.GetRessourceByID(idr)
+        price = float(price)
+        if price < round(r.GetPrice()*1.5, 2):
+            rCompany = self.GetRessourceByIDForCompany(self.GetRessourceForCompany(), idr)
+            if rCompany.GetQuantity() >= qt:
+                self.Back.Sell(r, qt, price)
+

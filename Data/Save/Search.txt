@@ -1,1 +1,8 @@
+id:nom:machine:ressource:lvl:prix:check
 1:Haut fourneau:1:0:1:1200:0
+2:Minage du cuivre:0:4:0:1750:0
+3:Haute pression:2:0:1:1500:0
+4:Destruction:4:0:1:3200:0
+5:Mixture:5:0:1:5600:0
+6:Combinaison:6:0:1:4500:0
+7:Fillage du fer:0:10:0:6200:0

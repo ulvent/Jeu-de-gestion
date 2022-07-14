@@ -38,7 +38,7 @@ class RecipeView:
         r = self.RC.GetRecipeById(item[2])
         for w in self.Frame.winfo_children():
             w.destroy()
-        Label(self.Frame, text=self.RC.GetInfo(item[2])).pack(fill=X)
+        Label(self.Frame, text=self.RC.GetInfo(item[2]), font=("Arial", 15)).pack(fill=X)
         entry = Entry(self.Frame, textvariable=qt)
         entry.pack(fill=X)
         entry.delete(0, END)

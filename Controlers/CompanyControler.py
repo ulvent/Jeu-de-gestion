@@ -6,12 +6,13 @@ from View.CompanyView import CompanyView
 
 
 class CompanyControler:
-    def __init__(self, rc, mc, back):
+    def __init__(self, rc, mc, back, sc):
         self.Company = 0
-        self.CV = CompanyView(self, back)
+        self.CV = CompanyView(self, back, sc)
         self.RC = rc
         self.MC = mc
         self.Back = back
+        self.SC = sc
 
         self.SetCompany()
         EnterLog("Init Company Controler :: SUCCESS")
@@ -41,6 +42,9 @@ class CompanyControler:
     def GetName(self):
         return self.Company.GetName()
 
+    def GetLabo(self):
+        return self.Company.GetLabo()
+
     def GetToString(self):
         return self.Company.ToString()
 
@@ -68,6 +72,9 @@ class CompanyControler:
     def GetMachines(self):
         return self.Company.GetMachines()
 
+    def SetMachine(self, value):
+        self.Company.SetMachine(value)
+
     def GetStorageQuantity(self):
         st = 0
         for r in self.GetRessources():
@@ -76,7 +83,7 @@ class CompanyControler:
 
     def WriteRessources(self):
         os.remove("Data/Save/Ressources.txt")
-        with open("Data/Save/Ressources.txt", "a+") as File:
+        with open("Data/Save/Ressources.txt", "a+", encoding="UTF-8") as File:
             for r in self.GetRessources():
                 File.write(str(r.GetID())+":"+str(r.GetQuantity())+"\n")
             File.close()
@@ -93,5 +100,28 @@ class CompanyControler:
     def GetUsine(self, frame):
         for w in frame.winfo_children():
             w.destroy()
+        self.verifMachine()
         self.CV.GetUsine(frame, self.GetMachines())
 
+    def verifMachine(self):
+        lt = []
+        machines = self.GetMachines()
+        searches = self.SC.GetSearches()
+        for i in range(0, len(machines)):
+            flag =0
+            for j in range(0, len(searches)):
+                if machines[i].GetID() == searches[j].GetIDM():
+                    if searches[j].GetCheck() == 1:
+                        lt.append(machines[i])
+                        flag =1
+                    else:
+                        flag =2
+            if flag == 0:
+                lt.append(machines[i])
+        self.SetMachine(lt)
+
+    def SetGenerateur(self, value):
+        self.Company.SetGenerator(value)
+
+    def SetLabo(self, value):
+        self.Company.SetLabo(value)

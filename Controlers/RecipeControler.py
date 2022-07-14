@@ -7,17 +7,18 @@ from View.RecipeView import RecipeView
 
 
 class RecipeControler:
-    def __init__(self, back):
+    def __init__(self, back, sc):
         self.recipe = []
         self.RV = RecipeView(self)
-        self.RC =RessourceControler(back)
+        self.RC =RessourceControler(back, sc)
         self.Back = back
         self.ReadFile()
+        self.SC = sc
         EnterLog("Init RecipeControler")
 
 
     def ReadFile(self):
-        with open("Data/Recipes.txt") as File:
+        with open("Data/Recipes.txt", encoding="UTF-8") as File:
             data = File.readlines()
             flag = -1
             for i in range(0, len(data)):
@@ -97,9 +98,10 @@ class RecipeControler:
     def GetRecipesByMachine(self, value, lvl):
         lt = []
         for r in self.recipe:
-            if r.GetIDM() == value and r.GetLevel() == lvl:
+            print(r.GetProduct())
+            if r.GetIDM() == value and r.GetLevel() <= lvl:
                 lt.append(r)
-        return lt
+        return self.verifRecipe(lt)
 
     def Retour(self):
         self.Back.Game()
@@ -114,4 +116,20 @@ class RecipeControler:
 
     def Production(self, qt, recipe):
         self.Back.Production(qt, recipe)
+
+    def verifRecipe(self, list):
+        lt = []
+        searches = self.SC.GetSearches()
+        for i in range(0, len(list)):
+            flag = 0
+            for j in range(0, len(searches)):
+                if self.RC.GetIDByName(list[i].GetProduct()) == searches[j].GetIDR():
+                    if searches[j].GetCheck() == 1:
+                        lt.append(list[i])
+                        flag =1
+                    else:
+                        flag = 2
+            if flag == 0:
+                lt.append(list[i])
+        return lt
 

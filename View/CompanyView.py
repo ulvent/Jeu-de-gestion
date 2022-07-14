@@ -7,11 +7,11 @@ from Logs import EnterLog
 
 
 class CompanyView:
-    def __init__(self, cv, back):
+    def __init__(self, cv, back, sc):
         self.CV = cv
         self.Frame = Frame()
         self.TreeCompany = Treeview()
-        self.RC = RecipeControler(back)
+        self.RC = RecipeControler(back, sc)
         EnterLog("Init CompanyView")
 
     def GetUsine(self, frame, list):

@@ -1,46 +1,42 @@
-2022-07-12 20:04:43 : Game :: Init
-2022-07-12 20:04:43 : ReadRessources :: SUCCESS
-2022-07-12 20:04:43 : Check Company's Ressources 
-2022-07-12 20:04:43 : Check Company's Ressources :: Exist
-2022-07-12 20:04:43 : Init RessourceView
-2022-07-12 20:04:43 : Init Ressource Controler :: SUCCESS
-2022-07-12 20:04:43 : Init MachineControler
-2022-07-12 20:04:43 : Init RecipeView
-2022-07-12 20:04:43 : ReadRessources :: SUCCESS
-2022-07-12 20:04:43 : Check Company's Ressources 
-2022-07-12 20:04:43 : Check Company's Ressources :: Exist
-2022-07-12 20:04:43 : Init RessourceView
-2022-07-12 20:04:43 : Init Ressource Controler :: SUCCESS
-2022-07-12 20:04:43 : Recipe Controler:: ReadFile
-2022-07-12 20:04:43 : Init RecipeControler
-2022-07-12 20:04:43 : Init CompanyView
-2022-07-12 20:04:43 : Get Ressources For Company:: SUCCESS
-2022-07-12 20:04:43 : Company exist
-2022-07-12 20:04:43 : Init Company
-2022-07-12 20:04:43 : SetCompany :: SUCCESS
-2022-07-12 20:04:43 : Init Company Controler :: SUCCESS
-2022-07-12 20:04:43 : Init RecipeView
-2022-07-12 20:04:43 : ReadRessources :: SUCCESS
-2022-07-12 20:04:43 : Check Company's Ressources 
-2022-07-12 20:04:43 : Check Company's Ressources :: Exist
-2022-07-12 20:04:43 : Init RessourceView
-2022-07-12 20:04:43 : Init Ressource Controler :: SUCCESS
-2022-07-12 20:04:43 : Recipe Controler:: ReadFile
-2022-07-12 20:04:43 : Init RecipeControler
-2022-07-12 20:04:43 : BillControler :: ReadBill :: SUCCESS
-2022-07-12 20:04:43 : BillControler :: ReadBill :: SUCCESS
-2022-07-12 20:04:43 : BillControler :: ReadBill :: SUCCESS
-2022-07-12 20:04:43 : Init BillView
-2022-07-12 20:04:43 : Init billControler
-2022-07-12 20:04:43 : Init Management
-2022-07-12 20:04:43 : Game :: Begin
+2022-07-14 20:26:16 : Game :: Init
+2022-07-14 20:26:16 : SearchControler :: ReadSearch :: SUCCESS
+2022-07-14 20:26:16 : Init Search View
+2022-07-14 20:26:16 : Init SearchControler
+2022-07-14 20:26:16 : ReadRessources :: SUCCESS
+2022-07-14 20:26:16 : Check Company's Ressources 
+2022-07-14 20:26:16 : Check Company's Ressources :: Exist
+2022-07-14 20:26:16 : Init RessourceView
+2022-07-14 20:26:16 : Init Ressource Controler :: SUCCESS
+2022-07-14 20:26:16 : Init MachineView
+2022-07-14 20:26:16 : Init MachineControler
+2022-07-14 20:26:16 : Init RecipeView
+2022-07-14 20:26:16 : ReadRessources :: SUCCESS
+2022-07-14 20:26:16 : Check Company's Ressources 
+2022-07-14 20:26:16 : Check Company's Ressources :: Exist
+2022-07-14 20:26:16 : Init RessourceView
+2022-07-14 20:26:16 : Init Ressource Controler :: SUCCESS
+2022-07-14 20:26:16 : Recipe Controler:: ReadFile
+2022-07-14 20:26:16 : Init RecipeControler
+2022-07-14 20:26:16 : BillControler :: ReadBill :: SUCCESS
+2022-07-14 20:26:16 : Init BillView
+2022-07-14 20:26:16 : Init billControler
+2022-07-14 20:26:16 : Init RecipeView
+2022-07-14 20:26:16 : ReadRessources :: SUCCESS
+2022-07-14 20:26:16 : Check Company's Ressources 
+2022-07-14 20:26:16 : Check Company's Ressources :: Exist
+2022-07-14 20:26:16 : Init RessourceView
+2022-07-14 20:26:16 : Init Ressource Controler :: SUCCESS
+2022-07-14 20:26:16 : Recipe Controler:: ReadFile
+2022-07-14 20:26:16 : Init RecipeControler
+2022-07-14 20:26:16 : Init CompanyView
+2022-07-14 20:26:16 : Get Ressources For Company:: SUCCESS
+2022-07-14 20:26:16 : Company exist
+2022-07-14 20:26:16 : Init Company
+2022-07-14 20:26:16 : SetCompany :: SUCCESS
+2022-07-14 20:26:16 : Init Company Controler :: SUCCESS
+2022-07-14 20:26:16 : Init Management
+2022-07-14 20:26:16 : Game :: Begin
 
-2022-07-12 20:04:43 : ClearFrame
-2022-07-12 20:04:43 : Init Top frame
-2022-07-12 20:04:43 : Init Content Frame with Lframe and Rframe
-2022-07-12 20:34:34 : Companyview :: GetUsine
-2022-07-12 20:34:44 : you clicked on : Scie
-2022-07-12 20:34:44 : Recipe view :: AllRecipeList
-2022-07-12 20:34:45 : Companyview :: GetUsine
-2022-07-12 20:34:45 : ClearFrame
-2022-07-12 20:34:45 : Init Content Frame with Lframe and Rframe
+2022-07-14 20:26:16 : ClearFrame
+2022-07-14 20:26:16 : Init Top frame
+2022-07-14 20:26:16 : Init Content Frame with Lframe and Rframe

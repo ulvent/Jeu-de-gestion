@@ -1,3 +1,16 @@
 1:Planche en bois:1:3:1
 3:1
 
+2:Lingot de fer:1:1:1
+2:3
+
+3:Lingot de cuivre:1:1:2
+3:4
+
+4:Fil de fer:5:4:1
+1:7
+
+5:Barre de Fer:2:2:1
+1:7
+10:5
+

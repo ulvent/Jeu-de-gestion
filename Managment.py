@@ -6,6 +6,7 @@ from Controlers.CompanyControler import *
 from Controlers.MachineControler import MachineControler
 from Controlers.RecipeControler import RecipeControler
 from Controlers.RessourceControler import *
+from Controlers.SearchControler import *
 
 from Logs import *
 
@@ -19,18 +20,21 @@ class Management:
         self.Tframe = Frame(self.ContentFrame, relief=SUNKEN, bd=2)
 
         #Controlers
-        self.RC = RessourceControler(self)
-        self.MC = MachineControler()
-        self.CC = CompanyControler(self.RC, self.MC, self)
-        self.RCC = RecipeControler(self)
+        self.SC = SearchControler(self)
+        self.RC = RessourceControler(self, self.SC)
+        self.MC = MachineControler(self, self.SC)
+        self.RCC = RecipeControler(self, self.SC)
         self.BC = BillControler(self)
+        self.CC = CompanyControler(self.RC, self.MC, self, self.SC)
+
+        self.SC.SetLab(self.CC.GetLabo())
 
         #window settings
         self.Root.minsize("1000", "500")
         self.Root.title("Optimisation Incorporation")
 
         #Programme setting
-        Version = "Version 0.3.0"
+        Version = "Version 1.2.0"
         Label(self.Root, text=Version).pack(side=BOTTOM)
 
         #test
@@ -54,9 +58,9 @@ class Management:
         #Right Frame
         Button(self.Rframe, text="Marchand", font=("Arial", 15), command=lambda: self.RC.GetShop(self.Rframe)).pack(fill=X)
         Button(self.Rframe, text="Usine", font=("Arial", 15), command=lambda: self.CC.GetUsine(self.Rframe)).pack(fill=X)
-        Button(self.Rframe, text="Laboratoire", font=("Arial", 15)).pack(fill=X)
+        Button(self.Rframe, text="Laboratoire", font=("Arial", 15), command=lambda: self.SC.AllSearch(self.Rframe)).pack(fill=X)
         Button(self.Rframe, text="Stockage", font=("Arial", 15), command=lambda: self.RC.GetStorage(self.Rframe, self.CC.GetRessources())).pack(fill=X)
-        Button(self.Rframe, text="Amélioration", font=("Arial", 15)).pack(fill=X)
+        Button(self.Rframe, text="Amélioration", font=("Arial", 15), command=lambda: self.MC.GetAllMachine(self.Rframe)).pack(fill=X)
         Button(self.Rframe, text="Historique des transactions", font=("Arial", 15), command=lambda: self.BC.GetAllBill(self.Rframe)).pack(fill=X)
 
         self.Tframe.pack(side=TOP, fill=X)
@@ -85,11 +89,11 @@ class Management:
     def Buy(self, price, Ress, qt):
         if self.CC.GetMoney() >= price:
             print(str(self.CC.GetMoney())+"-"+str(price))
-            self.CC.SetMoney(self.CC.GetMoney()-price)
+            self.CC.SetMoney(round(self.CC.GetMoney()-price, 2))
             rCompany = self.RC.GetRessourceByIDForCompany(self.CC.GetRessources(), Ress.GetID())
             nqt = rCompany.GetQuantity()+qt
             self.CC.SetRessources(self.RC.SetQuantityForCompany(Ress.GetID(), nqt, self.CC.GetRessources()))
-            self.BC.AddNewBill(Ress.GetPrice(), Ress.GetName(), qt)
+            self.BC.AddNewBill(Ress.GetPrice(), Ress.GetName(), qt, 0)
             self.CC.WriteRessources()
             self.CC.SaveCompany()
             self.initTop()
@@ -120,8 +124,34 @@ class Management:
             else:
                 EnterLog("Management :: Production :: Error : "+str(nb)+" =! "+str(check))
 
+    def Upgrade(self, idm, price):
+        if float(self.CC.GetMoney()) >= float(price):
+            if idm < 0:
+                if idm == -2:
+                    self.CC.SetGenerateur(self.CC.GetGenerator() + 1)
+                else:
+                    self.CC.SetLabo(self.CC.GetLabo() + 1)
+            self.MC.SetLevelMachine(idm)
+            self.MC.WriteMachine()
+            self.CC.SetMachine(self.MC.GetMachine())
+            self.CC.SetMoney(round(self.CC.GetMoney()-float(price), 2))
+            m = self.MC.GetMachineByID(idm)
+            self.BC.AddNewBill((m.GetPrice()*(m.GetLevel())), m.GetName(), 1, 0)
+            self.CC.SaveCompany()
+            self.initTop()
+            EnterLog("Management :: Upgrade :: SUCCESS")
+            self.Game()
+        else:
+            EnterLog("Management :: Upgrade :: Error : Prix trop élevé")
 
-
-
-
-
+    def Sell(self, Ress, qt, price):
+        print(str(self.CC.GetMoney())+"+" + str(price*qt))
+        self.CC.SetMoney(round(self.CC.GetMoney() + (price*qt), 2))
+        rCompany = self.RC.GetRessourceByIDForCompany(self.CC.GetRessources(), Ress.GetID())
+        nqt = rCompany.GetQuantity() - qt
+        self.CC.SetRessources(self.RC.SetQuantityForCompany(Ress.GetID(), nqt, self.CC.GetRessources()))
+        self.BC.AddNewBill(price, Ress.GetName(), qt, 1)
+        self.CC.WriteRessources()
+        self.CC.SaveCompany()
+        self.initTop()
+        self.Game()

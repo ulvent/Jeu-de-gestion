@@ -5,7 +5,6 @@ class Company:
     def __init__(self, name, money, st, lab, fact, gen, ress, machine):
         self.Name = name
         self.Money = money
-        self.PowerMax = gen*50
         #batiments
         self.BAT_Storage = st
         self.BAT_Laboratory = lab
@@ -36,19 +35,31 @@ class Company:
         return self.BAT_Storage
 
     def GetMoney(self):
-        return self.Money
+        return float(self.Money)
 
     def GetGenerator(self):
         return self.BAT_Generator
 
     def GetMaxPower(self):
-        return self.PowerMax
+        return int(self.BAT_Generator)*50
 
     def SetMoney(self, value):
         self.Money = value
 
     def SetRessources(self, value):
         self.Ressources = value
+
+    def SetMachine(self, value):
+        self.Machines = value
+
+    def SetGenerator(self, value):
+        self.BAT_Generator = value
+
+    def SetLabo(self, value):
+        self.BAT_Laboratory = value
+
+    def GetLabo(self):
+        return int(self.BAT_Laboratory)
 
     def GetSave(self):
         chaine = self.Name+"\n"
