@@ -3,9 +3,7 @@ from tkinter import *
 
 from Controlers.BillControler import BillControler
 from Controlers.CompanyControler import *
-from Controlers.MachineControler import MachineControler
 from Controlers.RecipeControler import RecipeControler
-from Controlers.RessourceControler import *
 from Controlers.SearchControler import *
 
 from Logs import *
@@ -34,7 +32,7 @@ class Management:
         self.Root.title("Optimisation Incorporation")
 
         #Programme setting
-        Version = "Version 1.3.0"
+        Version = "Version 1.4.0"
         Label(self.Root, text=Version).pack(side=BOTTOM)
 
         #test
@@ -119,10 +117,7 @@ class Management:
                     self.CC.SetRessources(self.RC.SetQuantityForCompany(rCompany.GetID(), nqt, self.CC.GetRessources()))
                 ressProd = self.RC.GetRessourceByIDForCompany(self.CC.GetRessources(), self.RC.GetIDByName(recipe.GetProduct()))
                 self.CC.SetRessources(self.RC.SetQuantityForCompany(ressProd.GetID(), qt, self.CC.GetRessources()))
-                self.CC.WriteRessources()
-                self.CC.SaveCompany()
-                self.initTop()
-                self.Game()
+                self.Save()
             else:
                 EnterLog("Management :: Production :: Error : "+str(nb)+" =! "+str(check))
 
@@ -133,6 +128,7 @@ class Management:
                     self.CC.SetGenerateur(self.CC.GetGenerator() + 1)
                 elif idm == -1:
                     self.CC.SetLabo(self.CC.GetLabo() + 1)
+                    self.SC.SetLab(self.CC.GetLabo() + 1)
                 else:
                     self.CC.SetStockage(self.CC.GetStorage() + 1)
             self.MC.SetLevelMachine(idm)
@@ -142,6 +138,7 @@ class Management:
             m = self.MC.GetMachineByID(idm)
             self.BC.AddNewBill((m.GetPrice()*(m.GetLevel())), m.GetName(), 1, 0)
             self.CC.SaveCompany()
+            self.CC.SetCompany()
             self.initTop()
             EnterLog("Management :: Upgrade :: SUCCESS")
             self.Game()
@@ -155,6 +152,25 @@ class Management:
         nqt = rCompany.GetQuantity() - qt
         self.CC.SetRessources(self.RC.SetQuantityForCompany(Ress.GetID(), nqt, self.CC.GetRessources()))
         self.BC.AddNewBill(price, Ress.GetName(), qt, 1)
+        self.Save()
+
+    def BuySearch(self, price, search):
+        price = price*1.21
+        if self.CC.GetMoney() >= price:
+            print(str(self.CC.GetMoney()) + "-" + str(price))
+            self.CC.SetMoney(round(self.CC.GetMoney() - price, 2))
+            self.SC.ValidSearch(search.GetID())
+            self.BC.AddNewBill(search.GetPrice(), search.GetName(), 1, 0)
+            self.SC.WriteSearch()
+            self.CC.SaveCompany()
+            self.CC.SetCompany()
+            EnterLog("Management :: BuySearch :: SUCCESS")
+            self.initTop()
+            self.Game()
+        else:
+            EnterLog("Management :: BuySearch :: Error : Prix trop élevé")
+
+    def Save(self):
         self.CC.WriteRessources()
         self.CC.SaveCompany()
         self.initTop()

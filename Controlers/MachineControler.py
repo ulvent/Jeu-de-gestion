@@ -11,6 +11,7 @@ class MachineControler:
         self.Back = back
         self.MV = MachineView(self)
         self.SC =sc
+        self.ReadMachine()
         EnterLog("Init MachineControler")
 
     def ReadMachine(self):
@@ -20,7 +21,9 @@ class MachineControler:
                 sp = data[i].split(":")
                 self.Machine.append(Machine(sp[0], sp[1], int(sp[2]), int(sp[3]), int(sp[4])))
             File.close()
-            return self.Machine
+
+    def GetMachines(self):
+        return  self.Machine
 
     def GetPowerMax(self):
         pw = 0

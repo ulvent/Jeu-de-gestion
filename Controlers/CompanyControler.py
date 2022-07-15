@@ -19,7 +19,7 @@ class CompanyControler:
 
     def SetCompany(self):
         ress = self.RC.GetRessourceForCompany()
-        mach = self.MC.ReadMachine()
+        mach = self.MC.GetMachine()
         with open("Data/Save/Company.txt", "r") as File:
             data = File.readlines()
             if data == []:

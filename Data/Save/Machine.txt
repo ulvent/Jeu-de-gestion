@@ -1,7 +1,7 @@
 -3:Entrepot:1:0:1650
 -2:Generateur:1:0:950
--1:Laboratoire:0:0:3500
-1:Fondrie:3:5:650
+-1:Laboratoire:0:0:1500
+1:Fondrie:0:5:650
 2:Presse:0:7:1200
 3:Scie:1:5:820
 4:Broyeur:0:10:1900

@@ -1,0 +1,15 @@
+1:1200.0:1:Haut fourneau:0
+2:1200.0:1:Haut fourneau:0
+3:1200.0:1:Haut fourneau:0
+4:1200.0:1:Haut fourneau:0
+5:1200.0:1:Haut fourneau:0
+6:1200.0:1:Haut fourneau:0
+7:1200.0:1:Haut fourneau:0
+8:1200.0:1:Haut fourneau:0
+9:1200.0:1:Haut fourneau:0
+10:1200.0:1:Haut fourneau:0
+11:1750.0:1:Minage du cuivre:0
+12:1500.0:1:Haute pression:0
+13:650.0:1:Fondrie:0
+14:1500.0:1:Laboratoire:0
+15:1500:1:Laboratoire:0
