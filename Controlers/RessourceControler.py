@@ -48,7 +48,7 @@ class RessourceControler:
 
 
     def InitRessourcesForCompany(self):
-        with open("Data/Save/Ressources.txt", "a+", encoding="UTF-8") as File:
+        with open("Data/Save/Ressources.txt", "a+", encoding="windows-1252") as File:
             for i in range(0, len(self.ListR)):
                 File.write(str(self.ListR[i].GetID())+":0\n")
             File.close()
@@ -56,7 +56,7 @@ class RessourceControler:
 
     def CheckRessourceCompany(self):
         EnterLog("Check Company's Ressources ")
-        with open("Data/Save/Ressources.txt", "r", encoding="UTF-8") as File:
+        with open("Data/Save/Ressources.txt", "r", encoding="windows-1252") as File:
             data = File.readlines()
             if data == []:
                 self.InitRessourcesForCompany()
@@ -70,7 +70,8 @@ class RessourceControler:
 
     def GetInfo(self, value):
         r = self.GetRessourceByID(value)
-        chaine = r.GetName()+"\nPrix TTC : "+str(round(r.GetPrice()*1.21, 2))+"€/unité"
+        rCompany = self.GetRessourceByIDForCompany(self.GetRessourceForCompany(), value)
+        chaine = r.GetName()+" : "+str(rCompany.GetQuantity())+"\nPrix TTC : "+str(round(r.GetPrice()*1.21, 2))+"€/unité"
         return chaine
 
     def Retour(self):
@@ -81,7 +82,6 @@ class RessourceControler:
         impPrice = round(r.GetPrice() * qt.get())
         TVA = round((impPrice / 100) * 21, 2)
         TotalPrice = impPrice+TVA
-        print("Prix total : "+str(TotalPrice)+"€")
         self.Back.Buy(TotalPrice, r, qt.get())
 
     def GetStorage(self, frame, list):
@@ -123,8 +123,7 @@ class RessourceControler:
     def Sell(self, qt, price, idr):
         r = self.GetRessourceByID(idr)
         price = float(price)
-        if price < round(r.GetPrice()*1.5, 2):
-            rCompany = self.GetRessourceByIDForCompany(self.GetRessourceForCompany(), idr)
-            if rCompany.GetQuantity() >= qt:
-                self.Back.Sell(r, qt, price)
+        rCompany = self.GetRessourceByIDForCompany(self.GetRessourceForCompany(), idr)
+        if rCompany.GetQuantity() >= qt:
+            self.Back.Sell(r, qt, price)
 

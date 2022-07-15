@@ -16,7 +16,7 @@ class SearchControler:
         self.labLvl = value
 
     def ReadSearch(self):
-        with open("Data/Save/Search.txt", encoding="UTF-8") as File:
+        with open("Data/Save/Search.txt", encoding="windows-1252") as File:
             data = File.readlines()
             for i in range(1, len(data)):
                 sp = data[i].split(":")

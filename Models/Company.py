@@ -2,13 +2,12 @@
 from Logs import EnterLog
 
 class Company:
-    def __init__(self, name, money, st, lab, fact, gen, ress, machine):
+    def __init__(self, name, money, st, lab, gen, ress, machine):
         self.Name = name
         self.Money = money
         #batiments
         self.BAT_Storage = st
         self.BAT_Laboratory = lab
-        self.BAT_Factory = fact
         self.BAT_Generator = gen
 
         self.Ressources = ress
@@ -21,7 +20,6 @@ class Company:
     def ToString(self):
         stg = "Entrepôt : "+str(self.BAT_Storage)
         stg += "\nLaboratoire : "+str(self.BAT_Laboratory)
-        stg += "\nUsine : "+str(self.BAT_Factory)
         stg += "\nGénérateur : "+str(self.BAT_Generator)
         return stg
 
@@ -69,6 +67,5 @@ class Company:
         chaine += str(self.Money)+"\n"
         chaine += str(self.BAT_Storage)+"\n"
         chaine += str(self.BAT_Laboratory)+"\n"
-        chaine += str(self.BAT_Factory)+"\n"
         chaine += str(self.BAT_Generator)+"\n\n"
         return chaine

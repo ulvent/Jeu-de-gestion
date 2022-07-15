@@ -24,7 +24,7 @@ class CompanyControler:
             data = File.readlines()
             if data == []:
                 EnterLog("New Company")
-                self.Company = Company("Optimisation.Inc", 1500,  1, 0, 1, 1, ress, mach)
+                self.Company = Company("Optimisation.Inc", 1500,  1, 0, 1, ress, mach)
                 File.close()
                 self.SaveCompany()
             else:
@@ -33,9 +33,8 @@ class CompanyControler:
                 Money = float(data[1].split("\n")[0])
                 Storage = int(data[2].split("\n")[0])
                 Laboratory = int(data[3].split("\n")[0])
-                Factory = int(data[4].split("\n")[0])
-                Generator = int(data[5].split("\n")[0])
-                self.Company = Company(Name, Money, Storage, Laboratory, Factory, Generator, ress, mach)
+                Generator = int(data[4].split("\n")[0])
+                self.Company = Company(Name, Money, Storage, Laboratory, Generator, ress, mach)
             File.close()
         EnterLog("SetCompany :: SUCCESS")
 
@@ -83,7 +82,7 @@ class CompanyControler:
 
     def WriteRessources(self):
         os.remove("Data/Save/Ressources.txt")
-        with open("Data/Save/Ressources.txt", "a+", encoding="UTF-8") as File:
+        with open("Data/Save/Ressources.txt", "a+", encoding="windows-1252") as File:
             for r in self.GetRessources():
                 File.write(str(r.GetID())+":"+str(r.GetQuantity())+"\n")
             File.close()

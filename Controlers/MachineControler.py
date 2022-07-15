@@ -14,7 +14,7 @@ class MachineControler:
         EnterLog("Init MachineControler")
 
     def ReadMachine(self):
-        with open("Data/Save/Machine.txt", encoding="UTF-8") as File:
+        with open("Data/Save/Machine.txt", encoding="windows-1252") as File:
             data = File.readlines()
             for i in range(0, len(data)):
                 sp = data[i].split(":")

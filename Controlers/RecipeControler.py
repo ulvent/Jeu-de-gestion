@@ -18,7 +18,7 @@ class RecipeControler:
 
 
     def ReadFile(self):
-        with open("Data/Recipes.txt", encoding="UTF-8") as File:
+        with open("Data/Recipes.txt", encoding="windows-1252") as File:
             data = File.readlines()
             flag = -1
             for i in range(0, len(data)):
@@ -53,10 +53,10 @@ class RecipeControler:
         ress = []
         cost = []
         id = 0
-        name = ""
         product = 0
         qt = 0
         idm = 0
+        lvl = 0
         for i in range(0, len(data)):
             if flag == -1:
                 ress = []
@@ -92,7 +92,8 @@ class RecipeControler:
                 data = r.GetCost()
                 ress = r.GetRess()
                 for i in range(0, len(data)):
-                    stg += "\n"+str(data[i])+" "+self.RC.GetNameByID(ress[i])
+                    rCompany = self.RC.GetRessourceByIDForCompany(self.RC.GetRessourceForCompany(), ress[i])
+                    stg += "\n"+str(data[i])+" "+self.RC.GetNameByID(ress[i])+" / "+str(rCompany.GetQuantity())
                 return stg
 
     def GetRecipesByMachine(self, value, lvl):

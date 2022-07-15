@@ -34,7 +34,7 @@ class Management:
         self.Root.title("Optimisation Incorporation")
 
         #Programme setting
-        Version = "Version 1.2.3"
+        Version = "Version 1.3.0"
         Label(self.Root, text=Version).pack(side=BOTTOM)
 
         #test
@@ -106,6 +106,7 @@ class Management:
         ress = recipe.GetRess()
         check = len(cost)
         nb = 0
+        print("len(cost) : "+str(len(cost)))
         for i in range(0, len(cost)):
             rCompany = self.RC.GetRessourceByIDForCompany(self.CC.GetRessources(), ress[i])
             if int(cost[i])*qt <= int(rCompany.GetQuantity()):
